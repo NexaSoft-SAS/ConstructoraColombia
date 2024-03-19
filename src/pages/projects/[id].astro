@@ -1,0 +1,141 @@
+---
+import BoxerBigImage from "@/components/BoxerBigImage.astro"
+import BoxerWorkout from "@/components/BoxerWorkout.astro"
+import BoxerTestimonials from "@/components/BoxerTestimonials.astro"
+import BoxerDetailInfo from "@/components/BoxerDetailInfo.astro"
+import BoxerDetailInfoRival from "@/components/BoxerDetailInfoRival.astro"
+import BoxerSocialLink from "@/components/BoxerSocialLink.astro"
+import SectionTitle from "@/components/SectionTitle.astro"
+
+import YouTube from "@/icons/youtube.astro"
+
+// import { COUNTRIES } from "@/consts/countries" // value={COUNTRIES[boxer.country].name}
+import { BOXERS, type Boxer } from "@/consts/boxers"
+import { COMBATS } from "@/consts/combats"
+import { FORECASTS } from "@/consts/forecasts"
+import Layout from "@/layouts/Layout.astro"
+import CombatSection from "@/sections/Combat.astro"
+import Forecasts, { type BoxerWithForecast } from "@/sections/Forecasts.astro"
+
+export function getStaticPaths() {
+	return BOXERS.map(({ id }) => {
+		return { params: { id } }
+	})
+}
+
+const { id } = Astro.params
+
+const [boxer] = BOXERS.filter((boxer) => boxer.id === id)
+
+const combat = COMBATS.find((combat) => combat.boxers.includes(id))
+
+if (!combat) {
+	return new Response(JSON.stringify("Combat not found"), { status: 404 })
+}
+
+const boxers = BOXERS.filter((boxer) => combat.boxers.includes(boxer.id))
+
+if (!boxers) {
+	return new Response(JSON.stringify("Apartment house not found"), { status: 404 })
+}
+
+const forecast = FORECASTS.find((forecast) => forecast.combatId === combat.id)
+
+const boxersWithForecast: BoxerWithForecast[] = []
+let forecastCount = 0
+
+let rivals: Boxer[] = []
+if (typeof boxer.versus === "object") {
+	for (const vs of boxer.versus) {
+		rivals = rivals.concat(BOXERS.filter((rival: Boxer) => rival.id === vs))
+	}
+} else {
+	rivals = BOXERS.filter((rival: Boxer) => rival.id === boxer.versus)
+}
+
+if (forecast) {
+	forecast.forecastData.forEach((forecastData) => {
+		const boxer = boxers.find((boxer) => boxer.id === forecastData.boxerId)
+		if (boxer) {
+			boxersWithForecast.push({ ...boxer, forecast: forecastData.forecast })
+			forecastCount += forecastData.predictionsCount
+		}
+	})
+}
+---
+
+<Layout
+	description={`Información del luchador ${boxer.name}`}
+	title={`${boxer.name} - Información del boxeador de Constructora Colombia`}
+>
+	<main>
+		<section class="flex flex-col items-center justify-center">
+			<div class="flex flex-col items-center md:flex-row md:gap-10 lg:items-start">
+				<div class="order-2 flex w-full flex-col md:order-1 md:w-auto md:gap-y-20 lg:w-1/4">
+					<BoxerDetailInfo title="Nombre del proyecto" value={boxer.name} />
+					<BoxerDetailInfo title="Ubicación" value={boxer.address} />
+					<BoxerDetailInfo title="Localidad" value={boxer.locality} />
+					<BoxerDetailInfo title="Antiguedad" value={`${boxer.age} años`} />
+					<div class="hidden md:block">
+						<BoxerDetailInfoRival title="Precio" value={rivals} />
+					</div>
+				</div>
+
+				<div
+					class="relative order-1 -mt-20 flex flex-col items-center justify-center md:order-2 lg:mx-4 lg:w-[800px]"
+				>
+					<BoxerBigImage id={id} name={boxer.name} address={boxer.address} />
+				</div>
+
+				<div class="order-3 flex w-full flex-col md:w-auto md:gap-y-20 lg:w-1/4">
+					<BoxerDetailInfo title="Área Construida" value={`${boxer.builtArea} m2.`} />
+					<BoxerDetailInfo title="Área Privada" value={`${boxer.privateArea} m2.`} />
+					<BoxerDetailInfo title="Alcobas" value={boxer.bedrooms} />
+					<BoxerDetailInfo title="Baños" value={boxer.toilets} />
+					<div class="block md:hidden">
+						<BoxerDetailInfoRival title="Rival/es" value={rivals} />
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-20 flex flex-row flex-wrap justify-center gap-8">
+				<BoxerSocialLink href={boxer.socials.youtube}>
+					<YouTube />
+				</BoxerSocialLink>
+			</div>
+		</section>
+
+		{
+			boxer.workout && (
+				<section class="my-44">
+					<SectionTitle
+						title="Avance de obra"
+						description="Revisa la etapa en que se encuentra el proyecto y el avance de obra de tu vivienda"
+					/>
+
+					<BoxerWorkout workout={boxer.workout} />
+				</section>
+			)
+		}
+		{
+			boxer.testimonials && boxer.testimonials.length > 0 && (
+				<section class="my-44">
+					<SectionTitle
+						title="Testimonios"
+						description="Descubre como ha sido la experiencia de nuestros clientes"
+					/>
+
+					<BoxerTestimonials testimonials={boxer.testimonials} />
+				</section>
+			)
+		}
+		{
+			forecast && (
+				<Forecasts combatNumber={combat.id} count={forecastCount} boxers={boxersWithForecast} />
+			)
+		}
+		<CombatSection combatNumber={combat.id} boxers={boxers} />
+	</main>
+</Layout>
+
+<script></script>

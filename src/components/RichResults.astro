@@ -1,0 +1,89 @@
+---
+import { BOXERS } from "@/consts/boxers"
+
+/** https://developers.google.com/search/docs/appearance/structured-data/organization */
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"url": "https://constructoracolombia.co",
+	"image": "/img/og.jpg",
+	"sameAs": [
+		"https://www.instagram.com/constructoracolombiaoficial",
+		"https://x.com/ConstColOficial",
+		"https://github.com/NexaSoft-SAS/ConstructoraColombia",
+	],
+	"logo": "/img/logo.png",
+	"name": "Constructora Colombia",
+	"alternateName": "Constructora Colombia",
+	"description":
+		"Web Oficial de Constructora Colombia, Desarrolladora inmobiliaria de proyectos de propiedad horizontal residencial",
+}
+
+/** https://developers.google.com/search/docs/appearance/structured-data/event */
+const eventSchema = {
+	"@context": "https://schema.org",
+	"@type": "Event",
+	"name": "Constructora Colombia",
+	"startDate": "2024-07-13T19:00:00",
+	"endDate": "2024-07-13T22:00:00",
+	"eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode", // https://schema.org/EventAttendanceModeEnumeration
+	"eventStatus": "https://schema.org/EventScheduled", // https://schema.org/EventStatusType
+	"location": {
+		"@type": "Place",
+		"name": "Constructora Colombia",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "Carrera 87c No. 73B - 37 sur",
+			"addressLocality": "Bosa El Remanso",
+			"postalCode": "110721",
+			"addressRegion": "Bogota",
+			"addressCountry": "COL",
+		},
+	},
+	"image": ["/img/og.jpg"],
+	"description":
+		"Constructora Colombia es una desarrolladora inmobiliaria de proyectos de propiedad horizontal residencial.",
+	/* "offers": {}, // Añadir cuando las entradas estén disponibles https://schema.org/Offer */
+	"performer": BOXERS.map(({ name }) => ({
+		"@type": "Person",
+		"name": name,
+	})),
+	"organizer": {
+		"@type": "Person",
+		"name": "Sebastian Rosas",
+		"url": "https://www.twitch.tv/sebastianrosas",
+	},
+}
+
+const FAQs = [
+	{
+		question: "¿Quiénes Somos?",
+		answer: `Los participantes de esta edición serán: ${BOXERS.map(({ name }) => name).join(", ")}`,
+	},
+	{
+		question: "¿Quiénes Somos?",
+		answer:
+			"Constructora Colombia es una desarrolladora inmobiliaria de proyectos de propiedad horizontal residencial",
+	},
+]
+
+/** https://developers.google.com/search/docs/appearance/structured-data/faqpage */
+const FAQSchema = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [
+		FAQs.map(({ answer, question }) => ({
+			"@type": "Question",
+			"name": question,
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": answer,
+			},
+		})),
+	],
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(FAQSchema)} />
