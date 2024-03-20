@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro"
-import { BOXERS } from "@/consts/boxers"
+
 import { COMBATS } from "@/consts/combats"
+import { PROJECTS } from "@/consts/projects"
 
 export const prerender = false
 
@@ -13,13 +14,13 @@ export const GET: APIRoute = ({ url }) => {
 		return new Response(JSON.stringify("Not found"), { status: 404 })
 	}
 
-	const boxers = BOXERS.filter((boxer) => combat.boxers.includes(boxer.id))
+	const projects = PROJECTS.filter((project) => combat.projects.includes(project.id))
 
-	if (boxers.length === 0) {
+	if (projects.length === 0) {
 		return new Response(JSON.stringify("Not found"), { status: 404 })
 	}
 
-	return new Response(JSON.stringify(boxers), {
+	return new Response(JSON.stringify(projects), {
 		headers: {
 			"content-type": "application/json",
 		},

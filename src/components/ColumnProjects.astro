@@ -1,17 +1,17 @@
 ---
-import type { Boxer } from "@/consts/boxers"
+import type { Project } from "@/consts/projects"
 
 interface Props {
-	boxers: Boxer[]
+	projects: Project[]
 	class?: string
 }
 
-const { boxers, class: className = "" } = Astro.props
+const { projects, class: className = "" } = Astro.props
 ---
 
 <div class:list={`flex flex-col ${className}`}>
 	{
-		boxers.map(({ id, name, address, countryName, builtArea, rotate, versus, allies }) => (
+		projects.map(({ id, name, address, countryName, builtArea, rotate, versus, allies }) => (
 			<a
 				href={`/projects/${id}`}
 				class:list={"boxer-link"}

@@ -1,63 +1,63 @@
 ---
-import BoxerBigImage from "@/components/BoxerBigImage.astro"
-import BoxerWorkout from "@/components/BoxerWorkout.astro"
-import BoxerTestimonials from "@/components/BoxerTestimonials.astro"
-import BoxerDetailInfo from "@/components/BoxerDetailInfo.astro"
-import BoxerDetailInfoRival from "@/components/BoxerDetailInfoRival.astro"
-import BoxerSocialLink from "@/components/BoxerSocialLink.astro"
+import ProjectBigImage from "@/components/ProjectBigImage.astro"
+import ProjectWorkout from "@/components/ProjectWorkout.astro"
+import ProjectTestimonials from "@/components/ProjectTestimonials.astro"
+import ProjectDetailInfo from "@/components/ProjectDetailInfo.astro"
+import ProjectDetailInfoRival from "@/components/ProjectDetailInfoRival.astro"
+import ProjectSocialLink from "@/components/ProjectSocialLink.astro"
 import SectionTitle from "@/components/SectionTitle.astro"
 
 import YouTube from "@/icons/youtube.astro"
 
 // import { COUNTRIES } from "@/consts/countries" // value={COUNTRIES[boxer.country].name}
-import { BOXERS, type Boxer } from "@/consts/boxers"
+import { PROJECTS, type Project } from "@/consts/projects"
 import { COMBATS } from "@/consts/combats"
 import { FORECASTS } from "@/consts/forecasts"
 import Layout from "@/layouts/Layout.astro"
 import CombatSection from "@/sections/Combat.astro"
-import Forecasts, { type BoxerWithForecast } from "@/sections/Forecasts.astro"
+import Forecasts, { type ProjectWithForecast } from "@/sections/Forecasts.astro"
 
 export function getStaticPaths() {
-	return BOXERS.map(({ id }) => {
+	return PROJECTS.map(({ id }) => {
 		return { params: { id } }
 	})
 }
 
 const { id } = Astro.params
 
-const [boxer] = BOXERS.filter((boxer) => boxer.id === id)
+const [boxer] = PROJECTS.filter((boxer) => boxer.id === id)
 
-const combat = COMBATS.find((combat) => combat.boxers.includes(id))
+const combat = COMBATS.find((combat) => combat.projects.includes(id))
 
 if (!combat) {
 	return new Response(JSON.stringify("Combat not found"), { status: 404 })
 }
 
-const boxers = BOXERS.filter((boxer) => combat.boxers.includes(boxer.id))
+const projects = PROJECTS.filter((boxer) => combat.projects.includes(boxer.id))
 
-if (!boxers) {
+if (!projects) {
 	return new Response(JSON.stringify("Apartment house not found"), { status: 404 })
 }
 
 const forecast = FORECASTS.find((forecast) => forecast.combatId === combat.id)
 
-const boxersWithForecast: BoxerWithForecast[] = []
+const projectsWithForecast: ProjectWithForecast[] = []
 let forecastCount = 0
 
-let rivals: Boxer[] = []
+let rivals: Project[] = []
 if (typeof boxer.versus === "object") {
 	for (const vs of boxer.versus) {
-		rivals = rivals.concat(BOXERS.filter((rival: Boxer) => rival.id === vs))
+		rivals = rivals.concat(PROJECTS.filter((rival: Project) => rival.id === vs))
 	}
 } else {
-	rivals = BOXERS.filter((rival: Boxer) => rival.id === boxer.versus)
+	rivals = PROJECTS.filter((rival: Project) => rival.id === boxer.versus)
 }
 
 if (forecast) {
 	forecast.forecastData.forEach((forecastData) => {
-		const boxer = boxers.find((boxer) => boxer.id === forecastData.boxerId)
+		const boxer = projects.find((boxer) => boxer.id === forecastData.boxerId)
 		if (boxer) {
-			boxersWithForecast.push({ ...boxer, forecast: forecastData.forecast })
+			projectsWithForecast.push({ ...boxer, forecast: forecastData.forecast })
 			forecastCount += forecastData.predictionsCount
 		}
 	})
@@ -72,36 +72,36 @@ if (forecast) {
 		<section class="flex flex-col items-center justify-center">
 			<div class="flex flex-col items-center md:flex-row md:gap-10 lg:items-start">
 				<div class="order-2 flex w-full flex-col md:order-1 md:w-auto md:gap-y-20 lg:w-1/4">
-					<BoxerDetailInfo title="Nombre del proyecto" value={boxer.name} />
-					<BoxerDetailInfo title="Ubicación" value={boxer.address} />
-					<BoxerDetailInfo title="Localidad" value={boxer.locality} />
-					<BoxerDetailInfo title="Antiguedad" value={`${boxer.age} años`} />
+					<ProjectDetailInfo title="Nombre del proyecto" value={boxer.name} />
+					<ProjectDetailInfo title="Ubicación" value={boxer.address} />
+					<ProjectDetailInfo title="Localidad" value={boxer.locality} />
+					<ProjectDetailInfo title="Antiguedad" value={`${boxer.age} años`} />
 					<div class="hidden md:block">
-						<BoxerDetailInfoRival title="Precio" value={rivals} />
+						<ProjectDetailInfoRival title="Precio" value={rivals} />
 					</div>
 				</div>
 
 				<div
 					class="relative order-1 -mt-20 flex flex-col items-center justify-center md:order-2 lg:mx-4 lg:w-[800px]"
 				>
-					<BoxerBigImage id={id} name={boxer.name} address={boxer.address} />
+					<ProjectBigImage id={id} name={boxer.name} address={boxer.address} />
 				</div>
 
 				<div class="order-3 flex w-full flex-col md:w-auto md:gap-y-20 lg:w-1/4">
-					<BoxerDetailInfo title="Área Construida" value={`${boxer.builtArea} m2.`} />
-					<BoxerDetailInfo title="Área Privada" value={`${boxer.privateArea} m2.`} />
-					<BoxerDetailInfo title="Alcobas" value={boxer.bedrooms} />
-					<BoxerDetailInfo title="Baños" value={boxer.toilets} />
+					<ProjectDetailInfo title="Área Construida" value={`${boxer.builtArea} m2.`} />
+					<ProjectDetailInfo title="Área Privada" value={`${boxer.privateArea} m2.`} />
+					<ProjectDetailInfo title="Alcobas" value={boxer.bedrooms} />
+					<ProjectDetailInfo title="Baños" value={boxer.toilets} />
 					<div class="block md:hidden">
-						<BoxerDetailInfoRival title="Rival/es" value={rivals} />
+						<ProjectDetailInfoRival title="Rival/es" value={rivals} />
 					</div>
 				</div>
 			</div>
 
 			<div class="mt-20 flex flex-row flex-wrap justify-center gap-8">
-				<BoxerSocialLink href={boxer.socials.youtube}>
+				<ProjectSocialLink href={boxer.socials.youtube}>
 					<YouTube />
-				</BoxerSocialLink>
+				</ProjectSocialLink>
 			</div>
 		</section>
 
@@ -113,7 +113,7 @@ if (forecast) {
 						description="Revisa la etapa en que se encuentra el proyecto y el avance de obra de tu vivienda"
 					/>
 
-					<BoxerWorkout workout={boxer.workout} />
+					<ProjectWorkout workout={boxer.workout} />
 				</section>
 			)
 		}
@@ -125,16 +125,16 @@ if (forecast) {
 						description="Descubre como ha sido la experiencia de nuestros clientes"
 					/>
 
-					<BoxerTestimonials testimonials={boxer.testimonials} />
+					<ProjectTestimonials testimonials={boxer.testimonials} />
 				</section>
 			)
 		}
 		{
 			forecast && (
-				<Forecasts combatNumber={combat.id} count={forecastCount} boxers={boxersWithForecast} />
+				<Forecasts combatNumber={combat.id} count={forecastCount} projects={projectsWithForecast} />
 			)
 		}
-		<CombatSection combatNumber={combat.id} boxers={boxers} />
+		<CombatSection combatNumber={combat.id} projects={projects} />
 	</main>
 </Layout>
 

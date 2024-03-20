@@ -1,5 +1,5 @@
 ---
-import { BOXERS } from "@/consts/boxers"
+import { PROJECTS } from "@/consts/projects"
 
 /** https://developers.google.com/search/docs/appearance/structured-data/organization */
 const organizationSchema = {
@@ -44,7 +44,7 @@ const eventSchema = {
 	"description":
 		"Constructora Colombia es una desarrolladora inmobiliaria de proyectos de propiedad horizontal residencial.",
 	/* "offers": {}, // Añadir cuando las entradas estén disponibles https://schema.org/Offer */
-	"performer": BOXERS.map(({ name }) => ({
+	"performer": PROJECTS.map(({ name }) => ({
 		"@type": "Person",
 		"name": name,
 	})),
@@ -58,7 +58,7 @@ const eventSchema = {
 const FAQs = [
 	{
 		question: "¿Quiénes Somos?",
-		answer: `Los participantes de esta edición serán: ${BOXERS.map(({ name }) => name).join(", ")}`,
+		answer: `Los participantes de esta edición serán: ${PROJECTS.map(({ name }) => name).join(", ")}`,
 	},
 	{
 		question: "¿Quiénes Somos?",

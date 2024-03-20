@@ -1,9 +1,9 @@
 ---
-import type { Boxer } from "@/consts/boxers"
+import type { Project } from "@/consts/projects"
 
 interface Props {
 	title: string
-	value: Boxer[]
+	value: Project[]
 }
 
 const { title, value } = Astro.props
@@ -22,7 +22,7 @@ const { title, value } = Astro.props
 							class:list={"text-xl font-bold text-accent hover:underline"}
 							id="boxer-weight"
 							href={item.id}
-							title={`Visita la página del boxeador ${item.name}`}
+							title={`Visita la página del proyecto ${item.name}`}
 						>
 							{item.name}
 						</a>

@@ -1,4 +1,4 @@
-export interface Boxer {
+export interface Project {
 	id: string
 	name: string
 	locality: string
@@ -28,15 +28,15 @@ export interface Boxer {
 	allies?: string[]
 }
 
-const addGetters = (boxersWithoutAge: Omit<Boxer, "age">[]): Boxer[] => {
-	return boxersWithoutAge.map((boxerWithoutAge) => ({
+const addGetters = (projectsWithoutAge: Omit<Project, "age">[]): Project[] => {
+	return projectsWithoutAge.map((boxerWithoutAge) => ({
 		...boxerWithoutAge,
 		get age() {
 			return new Date(new Date().getTime() - this.release.getTime()).getFullYear() - 1970
 		},
 		// El enemigo de mi enemigo es mi amigo
 		get allies() {
-			return boxersWithoutAge
+			return projectsWithoutAge
 				.filter(
 					(ally) =>
 						(Array.isArray(ally.versus)
@@ -48,7 +48,7 @@ const addGetters = (boxersWithoutAge: Omit<Boxer, "age">[]): Boxer[] => {
 	}))
 }
 
-export const BOXERS: Boxer[] = addGetters([
+export const PROJECTS: Project[] = addGetters([
 	{
 		id: "edificio-1",
 		name: "Edificio Uno",

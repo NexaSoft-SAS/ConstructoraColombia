@@ -1,27 +1,27 @@
 ---
 import Action from "@/components/Action.astro"
-import ForecastBoxer from "@/components/ForecastBoxer.astro"
+import ForecastProject from "@/components/ForecastProject.astro"
 import Velocimetro from "@/components/Velocimetro.astro"
-import { type Boxer } from "@/consts/boxers"
+import { type Project } from "@/consts/projects"
 
-export interface BoxerWithForecast extends Boxer {
+export interface ProjectWithForecast extends Project {
 	forecast: number
 }
 interface Props {
 	count: number
 	combatNumber: string
-	boxers: BoxerWithForecast[]
+	projects: ProjectWithForecast[]
 }
 
-const { count, boxers } = Astro.props
+const { count, projects } = Astro.props
 ---
 
 <section class="forecastGrid mt-40 grid items-center gap-4 px-7">
-	<ForecastBoxer
-		image={`/img/projects/${boxers[0].id}-big.png`}
-		imageAlt={`${boxers[0].name}`}
-		boxerName={boxers[0].name}
-		percentage={boxers[0].forecast * 100}
+	<ForecastProject
+		image={`/img/projects/${projects[0].id}-big.png`}
+		imageAlt={`${projects[0].name}`}
+		boxerName={projects[0].name}
+		percentage={projects[0].forecast * 100}
 		class:list={["boxer1"]}
 	/>
 	<div class="pronostico flex flex-col items-center justify-center gap-4">
@@ -29,13 +29,13 @@ const { count, boxers } = Astro.props
 		<p class="max-w-72 text-center text-xl text-primary">
 			Número de unidades disponibles de {count} construidas
 		</p>
-		<Velocimetro percentage={boxers[1].forecast * 100} />
+		<Velocimetro percentage={projects[1].forecast * 100} />
 	</div>
-	<ForecastBoxer
-		image={`/img/projects/${boxers[1].id}-big.png`}
-		imageAlt={`${boxers[1].name}`}
-		boxerName={boxers[1].name}
-		percentage={boxers[1].forecast * 100}
+	<ForecastProject
+		image={`/img/projects/${projects[1].id}-big.png`}
+		imageAlt={`${projects[1].name}`}
+		boxerName={projects[1].name}
+		percentage={projects[1].forecast * 100}
 		class:list={["boxer1"]}
 	/>
 	<div class="action flex w-full flex-col items-center justify-center">
