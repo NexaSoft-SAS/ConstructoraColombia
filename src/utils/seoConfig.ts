@@ -29,8 +29,8 @@ export const manifest: Partial<ManifestOptions> = {
 	short_name: "Constructora Colombia",
 	description:
 		"Web Oficial de Constructora Colombia, Desarrolladora inmobiliaria de proyectos de propiedad horizontal residencial.",
-	theme_color: "#d5ff00",
-	background_color: "#d5ff00",
+	theme_color: "#f0bd22",
+	background_color: "#f0bd22",
 	display: "fullscreen",
 	icons: [
 		{

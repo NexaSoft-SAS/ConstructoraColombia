@@ -91,6 +91,6 @@
 	"scope": "/",
 	"start_url": "/?source=pwa",
 	"display": "standalone",
-	"theme_color": "#d5ff00",
-	"background_color": "#d5ff00"
+	"theme_color": "#f0bd22",
+	"background_color": "#f0bd22"
 }
