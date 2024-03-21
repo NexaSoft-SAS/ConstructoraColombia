@@ -6,50 +6,50 @@ export interface Combat {
 export const COMBATS: Combat[] = [
 	{
 		id: "1",
-		projects: ["edificio-1"],
+		projects: ["edificio-genesis"],
 	},
 	{
 		id: "2",
-		projects: ["edificio-2"],
+		projects: ["edificio-gloria"],
 	},
 	{
 		id: "3",
-		projects: ["edificio-3"],
+		projects: ["casas-britalia-uno"],
 	},
 	{
 		id: "4",
-		projects: ["edificio-4"],
+		projects: ["casas-britalia-dos"],
 	},
 	{
 		id: "5",
-		projects: ["edificio-5"],
+		projects: ["casas-britalia-tres"],
 	},
 	{
 		id: "6",
-		projects: ["edificio-6"],
+		projects: ["casas-divino-niño"],
 	},
 	{
 		id: "7",
-		projects: ["edificio-7"],
+		projects: ["casas-san-bernardino"],
 	},
 	{
 		id: "8",
-		projects: ["edificio-8"],
+		projects: ["apartamento-molinos-dos"],
 	},
 	{
 		id: "9",
-		projects: ["edificio-9"],
+		projects: ["casas-la-paz"],
 	},
 	{
 		id: "10",
-		projects: ["edificio-10"],
+		projects: ["casas-piamonte"],
 	},
-	{
-		id: "11",
-		projects: ["edificio-11"],
-	},
-	{
-		id: "12",
-		projects: ["edificio-12"],
-	},
+	// {
+	// 	id: "11",
+	// 	projects: ["edificio-11"],
+	// },
+	// {
+	// 	id: "12",
+	// 	projects: ["edificio-12"],
+	// },
 ]

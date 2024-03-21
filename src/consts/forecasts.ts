@@ -14,12 +14,12 @@ export const FORECASTS: Forecast[] = [
 		combatId: "1",
 		forecastData: [
 			{
-				boxerId: "edificio-1",
+				boxerId: "edificio-genesis",
 				forecast: 0.3,
 				predictionsCount: 30,
 			},
 			{
-				boxerId: "edificio-1",
+				boxerId: "edificio-genesis",
 				forecast: 0.7,
 				predictionsCount: 70,
 			},
@@ -29,12 +29,12 @@ export const FORECASTS: Forecast[] = [
 		combatId: "2",
 		forecastData: [
 			{
-				boxerId: "edificio-2",
+				boxerId: "edificio-gloria",
 				forecast: 0.8,
 				predictionsCount: 80,
 			},
 			{
-				boxerId: "edificio-2",
+				boxerId: "edificio-gloria",
 				forecast: 0.2,
 				predictionsCount: 20,
 			},
@@ -44,12 +44,12 @@ export const FORECASTS: Forecast[] = [
 		combatId: "3",
 		forecastData: [
 			{
-				boxerId: "edificio-3",
+				boxerId: "casas-britalia-uno",
 				forecast: 0.9,
 				predictionsCount: 90,
 			},
 			{
-				boxerId: "edificio-3",
+				boxerId: "casas-britalia-uno",
 				forecast: 0.1,
 				predictionsCount: 10,
 			},
@@ -59,12 +59,12 @@ export const FORECASTS: Forecast[] = [
 		combatId: "4",
 		forecastData: [
 			{
-				boxerId: "edificio-4",
+				boxerId: "casas-britalia-dos",
 				forecast: 0.6,
 				predictionsCount: 60,
 			},
 			{
-				boxerId: "edificio-4",
+				boxerId: "casas-britalia-dos",
 				forecast: 0.4,
 				predictionsCount: 40,
 			},

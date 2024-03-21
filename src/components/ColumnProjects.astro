@@ -85,10 +85,13 @@ const { projects, class: className = "" } = Astro.props
 			scale: 1.05;
 		}
 
+		/* text-red-500 */
 		&::after {
 			content: "Ver más";
-			@apply pointer-events-none absolute bottom-0 z-50 font-atomic text-2xl text-red-500;
+			@apply pointer-events-none absolute bottom-0 z-50 font-atomic text-2xl;
 			text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+			--tw-text-opacity: 1;
+			color: rgb(25 192 249 / var(--tw-text-opacity));
 		}
 	}
 
