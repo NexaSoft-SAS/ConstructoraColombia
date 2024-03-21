@@ -9,8 +9,8 @@ import { MOBILE_MENU_CONTENT_ID } from "@/consts/mobile-menu"
 const pages = [
 	{ name: "Inicio", href: "/" },
 	{ name: "Proyectos", href: "/proyectos", disabled: true, soonDate: "Próximamente" },
-	{ name: "¿Quienes somos?", href: "/nosotros", disabled: true, soonDate: "Próximamente" },
-	{ name: "Contacto", href: "/contacto", disabled: true, soonDate: "Próximamente" },
+	{ name: "¿Quienes somos?", href: "/nosotros" },
+	{ name: "Contacto", href: "/contacto" },
 ].map((page) => ({
 	...page,
 	active: Astro.url.pathname === page.href,

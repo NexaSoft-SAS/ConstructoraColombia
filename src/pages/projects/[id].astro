@@ -1,4 +1,5 @@
 ---
+import PrincipalDate from "@/sections/PrincipalDate.astro"
 import ProjectBigImage from "@/components/ProjectBigImage.astro"
 import ProjectWorkout from "@/components/ProjectWorkout.astro"
 import ProjectTestimonials from "@/components/ProjectTestimonials.astro"
@@ -14,8 +15,9 @@ import { PROJECTS, type Project } from "@/consts/projects"
 import { COMBATS } from "@/consts/combats"
 import { FORECASTS } from "@/consts/forecasts"
 import Layout from "@/layouts/Layout.astro"
-import CombatSection from "@/sections/Combat.astro"
 import Forecasts, { type ProjectWithForecast } from "@/sections/Forecasts.astro"
+
+// import CombatSection from "@/sections/Combat.astro"
 
 export function getStaticPaths() {
 	return PROJECTS.map(({ id }) => {
@@ -105,6 +107,10 @@ if (forecast) {
 			</div>
 		</section>
 
+		<section>
+			<PrincipalDate />
+		</section>
+
 		{
 			boxer.workout && (
 				<section class="my-44">
@@ -134,7 +140,7 @@ if (forecast) {
 				<Forecasts combatNumber={combat.id} count={forecastCount} projects={projectsWithForecast} />
 			)
 		}
-		<CombatSection combatNumber={combat.id} projects={projects} />
+		<!-- <CombatSection combatNumber={combat.id} projects={projects} /> -->
 	</main>
 </Layout>
 

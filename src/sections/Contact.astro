@@ -1,0 +1,59 @@
+---
+import Typography from "@/components/Typography.astro"
+import Location from "@/sections/Location.astro"
+---
+
+<section class="mx-auto">
+	<Typography as="h3" variant="h3" color="white" class:list={"text-center"}>
+		contactanos
+	</Typography>
+	<Typography as="p" variant="body" color="neutral" class:list={"mt-4 text-center"}>
+		Estamos a tu disposición para resolver tus dudas o informarte todo acerca de nuestros nuevos
+		proyectos.
+	</Typography>
+	<div class="mt-12 flex flex-col items-center justify-center gap-4">
+		<Typography as="h3" variant="h3" color="neutral" class:list={"text-center"}>
+			Correo electrónico:
+		</Typography>
+		<a
+			href="mailto:constructoracolombiaoficial@gmail.com"
+			target="_blank"
+			rel="noopener"
+			aria-label="Escribir un correo electrónico para Constructora Colombia, se abrirá en una nueva pestaña"
+		>
+			<Typography
+				as="h3"
+				variant="body"
+				color="neutral"
+				class:list={"text-center hover:text-accent"}
+			>
+				constructoracolombiaoficial@gmail.com
+			</Typography>
+		</a>
+		<Typography as="h3" variant="h3" color="neutral" class:list={"mt-8 text-center"}>
+			Celular:
+		</Typography>
+		<a
+			href="https://api.whatsapp.com/send?phone=573143606173"
+			target="_blank"
+			rel="noopener"
+			aria-label="Abrir chat de Whatsapp con Constructora Colombia, se abrirá en una nueva pestaña"
+			><Typography
+				as="h3"
+				variant="body"
+				color="neutral"
+				class:list={"text-center hover:text-accent"}
+			>
+				314 3606173
+			</Typography>
+		</a>
+		<Typography as="h3" variant="h3" color="neutral" class:list={"mt-8 text-center"}>
+			Dirección:
+		</Typography>
+		<Typography as="h3" variant="body" color="neutral" class:list={"text-center"}>
+			Carrera 87c No. 73B - 37 sur, Bogotá
+		</Typography>
+	</div>
+	<Location />
+</section>
+<style></style>

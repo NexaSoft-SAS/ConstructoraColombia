@@ -1,0 +1,23 @@
+---
+import Typography from "@/components/Typography.astro"
+import MapMarkerIcon from "@/icons/map-marker.astro"
+---
+
+<section class="mx-auto flex justify-center text-center">
+	<Typography
+		as="h2"
+		variant="h2"
+		color="neutral"
+		class:list={"underline-transition mt-6 flex max-w-sm flex-col transition-all duration-300 ease-in-out hover:text-accent motion-reduce:transition-none"}
+	>
+		<a
+			class="flex"
+			href="https://maps.app.goo.gl/VXfgWDXSZDHUA4jm9"
+			target="_blank"
+			rel="noopener"
+			aria-label="ubicación de Constructora Colombia en google maps, se abrirá en una nueva pestaña"
+		>
+			<MapMarkerIcon class="mr-1 max-md:mt-1 md:mt-0.5 md:size-6" /> Constructora Colombia
+		</a>
+	</Typography>
+</section>

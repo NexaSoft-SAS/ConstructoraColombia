@@ -13,7 +13,7 @@ import { SPONSORS } from "@/consts/sponsors"
 	</Typography>
 	<div class="mt-12 grid select-none grid-cols-3 gap-2 md:gap-8">
 		{
-			SPONSORS.filter(({ id }) => id === "nexasoft").map(({ id, name, url, image }) => (
+			SPONSORS.filter(({ id }) => id !== "nexasoft").map(({ id, name, url, image }) => (
 				<a
 					class="company-link group relative flex h-24 items-center justify-center overflow-hidden md:h-32"
 					title={`Visita la página del patrocinador ${name}`}
@@ -42,9 +42,9 @@ import { SPONSORS } from "@/consts/sponsors"
 		<a
 			class="transition hover:scale-110 focus:scale-110 motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:focus:scale-100"
 			href="https://www.nexasoft.dev"
-			title="Ir a la página de ..."
+			title="Ir a la página de Nexasoft SAS"
 			target="_blank"
-			aria-label="Link con el logo de ... que lleva a https://www.nexasoft.dev"
+			aria-label="Link con el logo de Nexasoft SAS que lleva a https://www.nexasoft.dev"
 		>
 			<SponsorLogo
 				logo="nexasoft"
