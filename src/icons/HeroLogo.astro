@@ -30,8 +30,8 @@
 				.cls-4 {
 					font-size: 126px;
 					/* #333 */
-					fill: #fff;
-					stroke: #fff;
+					fill: var(--color-primary);
+					stroke: var(--color-primary);
 					stroke-width: 8px;
 					font-family: Dubai-Regular, Dubai, Sans-serif;
 				}
@@ -75,7 +75,7 @@
 			</g>
 		</g>
 	</symbol>
-	{Astro.props.noEffect && <use href="#hero-logo" class="text-[#f5cc2e]/70 blur-xl md:blur-md" />}
+	{Astro.props.noEffect && <use href="#hero-logo" class="text-[#f5cc2e]/70 blur-lg md:blur-md" />}
 	<use href="#hero-logo" class:list={Astro.props.noEffect ? "text-white" : "text-primary"}></use>
 </svg>
 <style>

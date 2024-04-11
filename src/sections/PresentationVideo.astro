@@ -1,10 +1,10 @@
 ---
-import DrawnXLogo from "@/components/DrawnXLogo.astro"
+import DrawnCLogo from "@/components/DrawnCLogo.astro"
 import LiteYouTube from "@/components/LiteYouTube.astro"
 import Typography from "@/components/Typography.astro"
 ---
 
-<section class="mt-10 overflow-hidden px-2 pb-48 pt-16 sm:pb-56 sm:pt-20 md:pb-96 md:pt-60">
+<section class="sm:pb-26 md:pb-30 md:pt-30 mt-10 overflow-hidden px-2 pb-24 pt-16 sm:pt-20">
 	<Typography as="h3" variant="h3" color="accent" class:list={"text-center"}>
 		Presentación
 	</Typography>
@@ -19,7 +19,7 @@ import Typography from "@/components/Typography.astro"
 	</Typography>
 
 	<div class="relative mt-8">
-		<DrawnXLogo
+		<DrawnCLogo
 			class:list={"absolute inset-0 -z-10 m-auto scale-125 select-none drop-shadow-[0_0_40px_rgba(213,255,0,1)]"}
 		/>
 		<LiteYouTube videoId="replace" backgroundImage="/img/video-presentation-cover.webp" />
