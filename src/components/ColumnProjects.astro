@@ -14,7 +14,7 @@ const { projects, class: className = "" } = Astro.props
 		projects.map(({ id, name, address, countryName, builtArea, rotate, versus, allies }) => (
 			<a
 				href={`/projects/${id}`}
-				class:list={"boxer-link"}
+				class:list={"project-link"}
 				title={`Visita la página del proyecto ${name}`}
 				data-id={id}
 				data-name={name}
@@ -24,12 +24,12 @@ const { projects, class: className = "" } = Astro.props
 				data-opponents={versus}
 				data-allies={allies}
 			>
-				<div class="boxer-link-background" />
+				<div class="project-link-background" />
 				<img
 					loading="lazy"
 					src={`/img/projects/${id}-small.png`}
 					alt={`Foto en pequeño del proyecto ${name}`}
-					class:list={`boxer-image aspect-square h-full w-full object-contain ${rotate ? "rotate-y-180" : ""}`}
+					class:list={`project-image aspect-square h-full w-full object-contain ${rotate ? "rotate-y-180" : ""}`}
 				/>
 			</a>
 		))
@@ -37,14 +37,14 @@ const { projects, class: className = "" } = Astro.props
 </div>
 
 <style>
-	.boxer-link {
+	.project-link {
 		@apply relative flex flex-col items-center justify-center transition-opacity duration-300 ease-in-out md:size-28 xl:size-36;
 
 		&:hover {
 			@apply opacity-90;
 		}
 
-		& .boxer-image {
+		& .project-image {
 			@apply z-20 h-full object-contain transition-opacity duration-300 ease-in-out;
 			mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 			filter: grayscale(100%);
@@ -52,7 +52,7 @@ const { projects, class: className = "" } = Astro.props
 		}
 	}
 
-	.boxer-link-background {
+	.project-link-background {
 		@apply absolute bottom-0 block h-3/5 w-full opacity-25 transition-opacity duration-300 ease-in-out;
 		background: linear-gradient(
 			180deg,
@@ -62,41 +62,41 @@ const { projects, class: className = "" } = Astro.props
 		);
 	}
 
-	.boxer-link:hover .boxer-image,
-	.boxer-link.active .boxer-image {
+	.project-link:hover .project-image,
+	.project-link.active .project-image {
 		scale: 1.05;
 		filter: grayscale(0%);
 	}
 
-	.boxer-link.ally {
-		& .boxer-image {
+	.project-link.ally {
+		& .project-image {
 			scale: 1.05;
 		}
 
 		&::after {
 			content: "aliada";
-			@apply pointer-events-none absolute bottom-0 z-50 font-atomic text-2xl text-green-500;
+			@apply pointer-events-none absolute bottom-0 z-50 font-dubai text-2xl text-green-500;
 			text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 		}
 	}
 
-	.boxer-link.opponent {
-		& .boxer-image {
+	.project-link.opponent {
+		& .project-image {
 			scale: 1.05;
 		}
 
 		/* text-red-500 */
 		&::after {
 			content: "Ver más";
-			@apply pointer-events-none absolute bottom-0 z-50 font-atomic text-2xl;
+			@apply pointer-events-none absolute bottom-0 z-50 font-dubai text-2xl;
 			text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 			--tw-text-opacity: 1;
 			color: rgb(25 192 249 / var(--tw-text-opacity));
 		}
 	}
 
-	.boxer-link.active .boxer-link-background,
-	.boxer-link:hover .boxer-link-background {
+	.project-link.active .project-link-background,
+	.project-link:hover .project-link-background {
 		filter: brightness(0.5);
 	}
 	.rotate-y-180 {

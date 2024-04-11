@@ -17,13 +17,6 @@ const { count, projects } = Astro.props
 ---
 
 <section class="forecastGrid mt-40 grid items-center gap-4 px-7">
-	<ForecastProject
-		image={`/img/projects/${projects[0].id}-big.png`}
-		imageAlt={`${projects[0].name}`}
-		boxerName={projects[0].name}
-		percentage={projects[0].forecast * 100}
-		class:list={["boxer1"]}
-	/>
 	<div class="pronostico flex flex-col items-center justify-center gap-4">
 		<h2 class="text-2xl font-medium uppercase text-white">Unidades disponibles</h2>
 		<p class="max-w-72 text-center text-xl text-primary">
@@ -34,9 +27,9 @@ const { count, projects } = Astro.props
 	<ForecastProject
 		image={`/img/projects/${projects[1].id}-big.png`}
 		imageAlt={`${projects[1].name}`}
-		boxerName={projects[1].name}
+		projectName={projects[1].name}
 		percentage={projects[1].forecast * 100}
-		class:list={["boxer1"]}
+		class:list={["project1"]}
 	/>
 	<div class="action flex w-full flex-col items-center justify-center">
 		<Action
@@ -53,16 +46,13 @@ const { count, projects } = Astro.props
 
 <style>
 	.forecastGrid {
-		grid-template-areas: "prono prono" "boxer1 boxer2" "action action";
+		grid-template-areas: "prono prono" "project1 action";
 		column-gap: 2rem;
 		.pronostico {
 			grid-area: prono;
 		}
-		.boxer1 {
-			grid-area: boxer1;
-		}
-		.boxer2 {
-			grid-area: boxer2;
+		.project1 {
+			grid-area: project1;
 		}
 		.action {
 			grid-area: action;
@@ -71,10 +61,10 @@ const { count, projects } = Astro.props
 
 	@media (min-width: 1150px) {
 		.forecastGrid {
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(2, 1fr);
 			grid-template-areas:
-				"boxer1 prono boxer2"
-				"action action action";
+				"prono project1"
+				"action action";
 		}
 	}
 </style>

@@ -22,7 +22,7 @@ const { combatNumber, projects } = Astro.props
 	<div class:list={["relative flex w-full flex-col items-center justify-center py-20"]}>
 		<Typography
 			as="div"
-			variant="atomic-title"
+			variant="dubai-title"
 			color="primary"
 			tabindex={-1}
 			class:list={"absolute inset-0 -z-10 self-center text-center text-[20rem] opacity-80"}
@@ -34,7 +34,7 @@ const { combatNumber, projects } = Astro.props
 					{ordinals[combatNumber]} combate
 				</span>
 				<span>
-					{projects.map((boxer) => boxer.name).join(" vs ")}
+					{projects.map((project) => project.name).join(" vs ")}
 				</span>
 			</span>
 		</h2>

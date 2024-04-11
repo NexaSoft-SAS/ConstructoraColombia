@@ -5,9 +5,9 @@ import { COMBATS } from "@/consts/combats"
 export const prerender = false
 
 export const GET: APIRoute = ({ url }) => {
-	const boxerId = url.searchParams.get("id")
+	const projectId = url.searchParams.get("id")
 
-	const combat = COMBATS.find((combat) => combat.projects.includes(boxerId as string))
+	const combat = COMBATS.find((combat) => combat.projects.includes(projectId as string))
 
 	if (!combat) {
 		return new Response(JSON.stringify("Not found"), { status: 404 })

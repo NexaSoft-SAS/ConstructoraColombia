@@ -1,8 +1,10 @@
 ---
 import jost from "@fontsource-variable/jost/files/jost-latin-wght-normal.woff2"
-import atomic from "/fonts/atomic.woff2"
 
+// import atomic from "/fonts/atomic.woff2"
 import RichResults from "@/components/RichResults.astro"
+
+import dubai from "/fonts/Dubai-Bold.woff2"
 
 interface Props {
 	title: string
@@ -28,7 +30,7 @@ const canonicalURL = canonical
 <meta charset="UTF-8" />
 <meta name="description" content={description} />
 
-<link rel="preload" href={atomic} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={dubai} as="font" type="font/woff2" crossorigin />
 <link rel="preload" href={jost} as="font" type="font/woff2" crossorigin />
 
 {

@@ -29,8 +29,8 @@ export interface Project {
 }
 
 const addGetters = (projectsWithoutAge: Omit<Project, "age">[]): Project[] => {
-	return projectsWithoutAge.map((boxerWithoutAge) => ({
-		...boxerWithoutAge,
+	return projectsWithoutAge.map((projectWithoutAge) => ({
+		...projectWithoutAge,
 		get age() {
 			return new Date(new Date().getTime() - this.release.getTime()).getFullYear() - 1970
 		},
@@ -63,7 +63,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos",
 		toilets: 1,
 		socials: {
-			youtube: "https://youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://youtube.com/@ConstructoraColombiaOficial",
 		},
 		testimonials: [
 			{
@@ -86,7 +86,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
 		},
 	},
 	{
@@ -103,7 +103,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://youtube.com/@ConstructoraColombiaOficial",
 		},
 		// workout: {
 		// 	videoID: "",
@@ -124,7 +124,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://youtube.com/@ConstructoraColombiaOficial",
 		},
 		rotate: true,
 	},
@@ -142,7 +142,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://youtube.com/@ConstructoraColombiaOficial",
 		},
 		rotate: true,
 	},
@@ -160,7 +160,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://youtube.com/@ConstructoraColombiaOficial",
 		},
 	},
 	{
@@ -177,7 +177,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://youtube.com/@ConstructoraColombiaOficial",
 		},
 		testimonials: [
 			{
@@ -201,7 +201,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
 		},
 		rotate: true,
 	},
@@ -219,7 +219,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
 		},
 		rotate: true,
 	},
@@ -237,7 +237,7 @@ export const PROJECTS: Project[] = addGetters([
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {
-			youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
+			// youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
 		},
 	},
 	// {
@@ -255,23 +255,6 @@ export const PROJECTS: Project[] = addGetters([
 	// 	toilets: 1,
 	// 	socials: {
 	// 		youtube: "https://www.youtube.com/@ConstructoraColombiaOficial",
-	// 	},
-	// },
-	// {
-	// 	id: "edificio-12",
-	// 	name: "Edificio Doce",
-	// 	realName: "Edificio Doce",
-	// 	locality: "Puente Aranda",
-	// 	release: new Date(2021, 9, 9),
-	// 	builtArea: 39,
-	// 	privateArea: 33.3,
-	// 	address: "Cl. 34 Sur #51b-45, Bogotá",
-	// 	price: 0,
-	// 	versus: "edificio-12",
-	// 	bedrooms: "Dos", // encontrado
-	// 	toilets: 1,
-	// 	socials: {
-	// 		youtube: "http://youtube.com/@ConstructoraColombiaOficial",
 	// 	},
 	// },
 ] as const)

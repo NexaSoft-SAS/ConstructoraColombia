@@ -5,14 +5,14 @@ import ProjectBigImage from "@/components/ProjectBigImage.astro"
 import { PROJECTS } from "@/consts/projects"
 import { COUNTRIES } from "@/consts/countries"
 
-const listOfProjects = PROJECTS.map((boxer) => {
-	const { address } = boxer
+const listOfProjects = PROJECTS.map((project) => {
+	const { address } = project
 	const countryName = COUNTRIES[address]?.name || ""
-	return { ...boxer, countryName }
+	return { ...project, countryName }
 })
 
 // split in 4 columns
-const boxerColumns = [
+const projectColumns = [
 	listOfProjects.slice(0, 3),
 	listOfProjects.slice(3, 6),
 	listOfProjects.slice(6, 9),
@@ -23,12 +23,12 @@ const boxerColumns = [
 <section class="my-40">
 	<Typography
 		as="h3"
-		variant="atomic-title"
+		variant="dubai-title"
 		color="primary"
 		class:list={"text-center"}
 		id="selectedProject"
 	>
-		elige tu proyecto
+		Elige tu proyecto
 	</Typography>
 
 	<Typography as="p" variant="body" color="neutral" class="mt-4 text-center">
@@ -39,18 +39,23 @@ const boxerColumns = [
 		<article
 			class="relative flex w-full max-w-[60%] flex-col items-center justify-center md:absolute md:max-w-full"
 		>
-			<ProjectBigImage id="edificio-1" name="Edificio Uno" address="mx" countryName="México" />
+			<ProjectBigImage
+				id="edificio-genesis"
+				name="Edificio Genesís"
+				address="mx"
+				countryName="México"
+			/>
 		</article>
 
 		<div class="projects-nav hidden w-full justify-between md:flex">
 			<nav class="projects-lists flex h-full justify-start gap-2 py-4">
-				<ColumnProjects projects={boxerColumns[0]} />
-				<ColumnProjects projects={boxerColumns[1]} class="mt-4" />
+				<ColumnProjects projects={projectColumns[0]} />
+				<ColumnProjects projects={projectColumns[1]} class="mt-4" />
 			</nav>
 
 			<nav class="projects-lists flex h-full justify-end gap-2 py-4">
-				<ColumnProjects projects={boxerColumns[2]} class="mt-4" />
-				<ColumnProjects projects={boxerColumns[3]} />
+				<ColumnProjects projects={projectColumns[2]} class="mt-4" />
+				<ColumnProjects projects={projectColumns[3]} />
 			</nav>
 		</div>
 
@@ -58,7 +63,7 @@ const boxerColumns = [
 			<div class="carousel mt-8 w-full overflow-y-hidden overflow-x-scroll">
 				<div class="carousel-inner flex snap-x overflow-y-hidden overflow-x-scroll">
 					{
-						listOfProjects.map((boxer, index) => (
+						listOfProjects.map((project, index) => (
 							<div
 								class:list={`
 									carousel-item w-[40%] flex-shrink-0 snap-center px-2
@@ -66,7 +71,7 @@ const boxerColumns = [
 									${index === listOfProjects.length - 1 ? "mr-[30%]" : ""}
 								`}
 							>
-								<ColumnProjects projects={[boxer]} />
+								<ColumnProjects projects={[project]} />
 							</div>
 						))
 					}
@@ -80,11 +85,11 @@ const boxerColumns = [
 	import { $, $$ } from "@/lib/dom-selector"
 
 	document.addEventListener("astro:page-load", () => {
-		const boxerLinks = $$(".boxer-link") as globalThis.NodeListOf<HTMLAnchorElement>
-		const boxerNav = $(".projects-nav")
-		const boxerTitle = $(".boxer-title") as HTMLImageElement
-		const boxerPhoto = $(".boxer-photo") as HTMLPictureElement
-		const boxerCountry = $(".boxer-flag") as HTMLImageElement
+		const projectLinks = $$(".project-link") as globalThis.NodeListOf<HTMLAnchorElement>
+		const projectNav = $(".projects-nav")
+		const projectTitle = $(".project-title") as HTMLImageElement
+		const projectPhoto = $(".project-photo") as HTMLPictureElement
+		const projectCountry = $(".project-flag") as HTMLImageElement
 
 		function activateProject(
 			element: HTMLElement,
@@ -104,7 +109,7 @@ const boxerColumns = [
 			const lastName = splitName[splitName.length - 1]
 			const firstNames = splitName.slice(0, splitName.length - 1).join(" ")
 			const spanNames = `
-					<a href="/projects/${id}" class="boxer-link underline-transition transition-all duration-300 hover:text-accent motion-reduce:transition-none">
+					<a href="/projects/${id}" class="project-link underline-transition transition-all duration-300 hover:text-accent motion-reduce:transition-none">
 						<span class="flex flex-col">
 							<span class="text-4xl">${firstNames?.toLocaleLowerCase()}</span>
 							<span>${lastName?.toLocaleLowerCase()}</span>
@@ -122,7 +127,7 @@ const boxerColumns = [
 
 			if (showAlliesAndOpponents) {
 				allies.split(",").map((ally) =>
-					boxerLinks.forEach((link) => {
+					projectLinks.forEach((link) => {
 						if (link.dataset.id === ally) {
 							link.classList.add("ally")
 						}
@@ -130,7 +135,7 @@ const boxerColumns = [
 				)
 
 				opponents.split(",").map((opponent) =>
-					boxerLinks.forEach((link) => {
+					projectLinks.forEach((link) => {
 						if (link.dataset.id === opponent) {
 							link.classList.add("opponent")
 						}
@@ -139,32 +144,32 @@ const boxerColumns = [
 			}
 
 			if (replaceUrl) {
-				history.replaceState({}, "", `?boxer=${id}`)
+				history.replaceState({}, "", `?project=${id}`)
 			}
 
-			const boxerSrc = `/img/projects/${id}-big`
+			const projectSrc = `/img/projects/${id}-big`
 
-			boxerPhoto.getElementsByTagName("source")[0].srcset = `${boxerSrc}.avif`
-			boxerPhoto.getElementsByTagName("img")[0].src = `${boxerSrc}.png`
-			boxerTitle.innerHTML = spanNames
-			boxerCountry.src = `/img/flags/${address}.webp`
-			boxerPhoto.getElementsByTagName("img")[0].alt = `Fotografía de ${name}`
+			projectPhoto.getElementsByTagName("source")[0].srcset = `${projectSrc}.avif`
+			projectPhoto.getElementsByTagName("img")[0].src = `${projectSrc}.png`
+			projectTitle.innerHTML = spanNames
+			projectCountry.src = `/img/flags/${address}.webp`
+			projectPhoto.getElementsByTagName("img")[0].alt = `Fotografía de ${name}`
 
-			boxerCountry.alt = `Bandera de ${countryName}`
+			projectCountry.alt = `Bandera de ${countryName}`
 		}
 
 		const urlParams = new URLSearchParams(window.location.search)
-		const boxerId = urlParams.get("boxer") ?? "edificio-1"
-		const boxerEl = $(`[data-id="${boxerId}"]`) as HTMLElement
-		if (boxerEl) {
-			activateProject(boxerEl, boxerEl, boxerNav, false)
+		const projectId = urlParams.get("project") ?? "edificio-1"
+		const projectEl = $(`[data-id="${projectId}"]`) as HTMLElement
+		if (projectEl) {
+			activateProject(projectEl, projectEl, projectNav, false)
 		}
 
-		boxerLinks.forEach((link) => {
+		projectLinks.forEach((link) => {
 			link.addEventListener("mouseenter", (event) => {
 				const currentTarget = event.currentTarget as HTMLElement
 				if (currentTarget.classList.contains("active")) return
-				activateProject(currentTarget, link, boxerNav, true)
+				activateProject(currentTarget, link, projectNav, true)
 			})
 		})
 
@@ -176,7 +181,7 @@ const boxerColumns = [
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						const link = entry.target.querySelector(".boxer-link") as HTMLAnchorElement
+						const link = entry.target.querySelector(".project-link") as HTMLAnchorElement
 						activateProject(link, link, carouselInner, false, false)
 					}
 				})

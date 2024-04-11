@@ -78,6 +78,12 @@ const { title, description, preload, canonical, image } = Astro.props
 				src: url("/fonts/atomic.woff2") format("woff2");
 			}
 
+			@font-face {
+				font-family: Dubai;
+				font-display: swap;
+				src: url("/fonts/Dubai-Regular.woff2") format("woff2");
+			}
+
 			html {
 				font-family: "Jost Variable", system-ui, sans-serif;
 				background: var(--background-color);

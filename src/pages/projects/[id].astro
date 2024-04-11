@@ -1,5 +1,5 @@
 ---
-import PrincipalDate from "@/sections/PrincipalDate.astro"
+// import PrincipalDate from "@/sections/PrincipalDate.astro"
 import ProjectBigImage from "@/components/ProjectBigImage.astro"
 import ProjectWorkout from "@/components/ProjectWorkout.astro"
 import ProjectTestimonials from "@/components/ProjectTestimonials.astro"
@@ -10,7 +10,7 @@ import SectionTitle from "@/components/SectionTitle.astro"
 
 import YouTube from "@/icons/youtube.astro"
 
-// import { COUNTRIES } from "@/consts/countries" // value={COUNTRIES[boxer.country].name}
+// import { COUNTRIES } from "@/consts/countries" // value={COUNTRIES[project.country].name}
 import { PROJECTS, type Project } from "@/consts/projects"
 import { COMBATS } from "@/consts/combats"
 import { FORECASTS } from "@/consts/forecasts"
@@ -27,7 +27,7 @@ export function getStaticPaths() {
 
 const { id } = Astro.params
 
-const [boxer] = PROJECTS.filter((boxer) => boxer.id === id)
+const [project] = PROJECTS.filter((project) => project.id === id)
 
 const combat = COMBATS.find((combat) => combat.projects.includes(id))
 
@@ -35,7 +35,7 @@ if (!combat) {
 	return new Response(JSON.stringify("Combat not found"), { status: 404 })
 }
 
-const projects = PROJECTS.filter((boxer) => combat.projects.includes(boxer.id))
+const projects = PROJECTS.filter((project) => combat.projects.includes(project.id))
 
 if (!projects) {
 	return new Response(JSON.stringify("Apartment house not found"), { status: 404 })
@@ -47,19 +47,19 @@ const projectsWithForecast: ProjectWithForecast[] = []
 let forecastCount = 0
 
 let rivals: Project[] = []
-if (typeof boxer.versus === "object") {
-	for (const vs of boxer.versus) {
+if (typeof project.versus === "object") {
+	for (const vs of project.versus) {
 		rivals = rivals.concat(PROJECTS.filter((rival: Project) => rival.id === vs))
 	}
 } else {
-	rivals = PROJECTS.filter((rival: Project) => rival.id === boxer.versus)
+	rivals = PROJECTS.filter((rival: Project) => rival.id === project.versus)
 }
 
 if (forecast) {
 	forecast.forecastData.forEach((forecastData) => {
-		const boxer = projects.find((boxer) => boxer.id === forecastData.boxerId)
-		if (boxer) {
-			projectsWithForecast.push({ ...boxer, forecast: forecastData.forecast })
+		const project = projects.find((project) => project.id === forecastData.projectId)
+		if (project) {
+			projectsWithForecast.push({ ...project, forecast: forecastData.forecast })
 			forecastCount += forecastData.predictionsCount
 		}
 	})
@@ -67,17 +67,17 @@ if (forecast) {
 ---
 
 <Layout
-	description={`Información del luchador ${boxer.name}`}
-	title={`${boxer.name} - Información del boxeador de Constructora Colombia`}
+	description={`Información del luchador ${project.name}`}
+	title={`${project.name} - Información del boxeador de Constructora Colombia`}
 >
 	<main>
 		<section class="flex flex-col items-center justify-center">
 			<div class="flex flex-col items-center md:flex-row md:gap-10 lg:items-start">
 				<div class="order-2 flex w-full flex-col md:order-1 md:w-auto md:gap-y-20 lg:w-1/4">
-					<ProjectDetailInfo title="Nombre del proyecto" value={boxer.name} />
-					<ProjectDetailInfo title="Ubicación" value={boxer.address} />
-					<ProjectDetailInfo title="Localidad" value={boxer.locality} />
-					<ProjectDetailInfo title="Antiguedad" value={`${boxer.age} años`} />
+					<ProjectDetailInfo title="Nombre del proyecto" value={project.name} />
+					<ProjectDetailInfo title="Ubicación" value={project.address} />
+					<ProjectDetailInfo title="Localidad" value={project.locality} />
+					<ProjectDetailInfo title="Antiguedad" value={`${project.age} años`} />
 					<div class="hidden md:block">
 						<ProjectDetailInfoRival title="Precio" value={rivals} />
 					</div>
@@ -86,14 +86,14 @@ if (forecast) {
 				<div
 					class="relative order-1 -mt-20 flex flex-col items-center justify-center md:order-2 lg:mx-4 lg:w-[800px]"
 				>
-					<ProjectBigImage id={id} name={boxer.name} address={boxer.address} />
+					<ProjectBigImage id={id} name={project.name} address={project.address} />
 				</div>
 
 				<div class="order-3 flex w-full flex-col md:w-auto md:gap-y-20 lg:w-1/4">
-					<ProjectDetailInfo title="Área Construida" value={`${boxer.builtArea} m2.`} />
-					<ProjectDetailInfo title="Área Privada" value={`${boxer.privateArea} m2.`} />
-					<ProjectDetailInfo title="Alcobas" value={boxer.bedrooms} />
-					<ProjectDetailInfo title="Baños" value={boxer.toilets} />
+					<ProjectDetailInfo title="Área Construida" value={`${project.builtArea} m2.`} />
+					<ProjectDetailInfo title="Área Privada" value={`${project.privateArea} m2.`} />
+					<ProjectDetailInfo title="Alcobas" value={project.bedrooms} />
+					<ProjectDetailInfo title="Baños" value={project.toilets} />
 					<div class="block md:hidden">
 						<ProjectDetailInfoRival title="Rival/es" value={rivals} />
 					</div>
@@ -101,37 +101,37 @@ if (forecast) {
 			</div>
 
 			<div class="mt-20 flex flex-row flex-wrap justify-center gap-8">
-				<ProjectSocialLink href={boxer.socials.youtube}>
+				<ProjectSocialLink href={project.socials.youtube}>
 					<YouTube />
 				</ProjectSocialLink>
 			</div>
 		</section>
 
-		<section>
+		<!-- <section>
 			<PrincipalDate />
-		</section>
+		</section> -->
 
 		{
-			boxer.workout && (
+			project.workout && (
 				<section class="my-44">
 					<SectionTitle
 						title="Avance de obra"
 						description="Revisa la etapa en que se encuentra el proyecto y el avance de obra de tu vivienda"
 					/>
 
-					<ProjectWorkout workout={boxer.workout} />
+					<ProjectWorkout workout={project.workout} />
 				</section>
 			)
 		}
 		{
-			boxer.testimonials && boxer.testimonials.length > 0 && (
+			project.testimonials && project.testimonials.length > 0 && (
 				<section class="my-44">
 					<SectionTitle
 						title="Testimonios"
 						description="Descubre como ha sido la experiencia de nuestros clientes"
 					/>
 
-					<ProjectTestimonials testimonials={boxer.testimonials} />
+					<ProjectTestimonials testimonials={project.testimonials} />
 				</section>
 			)
 		}
