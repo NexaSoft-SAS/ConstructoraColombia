@@ -36,6 +36,16 @@ const { title, description, preload, canonical, image } = Astro.props
 			title={title}
 		/>
 		<ViewTransitions />
+		<script is:inline>
+			window.getThemePreference = () => {
+				const localItem = typeof localStorage !== "undefined" && localStorage.getItem("theme")
+				if (localItem) return localItem
+				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+			}
+
+			const isDark = window.getThemePreference() === "dark"
+			document.documentElement.classList.toggle("dark", isDark)
+		</script>
 	</head>
 
 	<body
@@ -46,7 +56,7 @@ const { title, description, preload, canonical, image } = Astro.props
 			class="anchor-main-content fixed top-0 z-20 rounded-br-md bg-secondary px-3 py-5 text-primary opacity-0 focus:opacity-100"
 			>Saltar al contenido principal</a
 		>
-		<NoiseBackground />
+		<!-- <NoiseBackground /> -->
 		<LightsBackground />
 		<Header />
 		<div
@@ -60,16 +70,26 @@ const { title, description, preload, canonical, image } = Astro.props
 		<ButtonUp />
 		<style is:global>
 			:root {
-				--color-primary: #ddd;
-				--color-secondary: #333;
+				--color-primary: #333;
+				--color-secondary: #ddd;
 				--color-accent: #f0bd22;
 				--color-accent-rgb: 240, 189, 34;
 
-				--background-color: #141800;
+				--background-color: #eee;
 				--background-twitch: var(--color-twitch-ice);
 
 				--color-twitch: #9146ff;
 				--color-twitch-ice: #f0f0ff;
+			}
+
+			.dark {
+				--color-primary: #ddd;
+				--color-secondary: #333;
+				--color-twitch: #a270ff;
+
+				--background-color: #141800;
+
+				--background-image: var(--background-color) url("/concrete-dark.png") repeat;
 			}
 
 			@font-face {

@@ -1,7 +1,8 @@
 ---
-import GithubIcon from "@/icons/github.astro"
+import FacebookIcon from "@/icons/facebook.astro"
 import InstagramIcon from "@/icons/instagram.astro"
 import XIcon from "@/icons/x.astro"
+// import GithubIcon from "@/icons/github.astro"
 ---
 
 <nav class:list={`${Astro.props.class}`}>
@@ -39,6 +40,19 @@ import XIcon from "@/icons/x.astro"
 			<a
 				target="_blank"
 				rel="noopener"
+				aria-label="Facebook de Constructora Colombia, se abrirá en una nueva pestaña"
+				href="https://www.facebook.com/ConstructoraColombiaOficial"
+				class="inline-block any-hover:scale-125 any-hover:opacity-70 motion-safe:transition motion-reduce:any-hover:scale-100"
+			>
+				<FacebookIcon
+					class="text-primary transition-colors duration-300 hover:text-accent motion-reduce:duration-0"
+				/>
+			</a>
+		</li>
+		<!-- <li>
+			<a
+				target="_blank"
+				rel="noopener"
 				aria-label="GitHub de Constructora Colombia, se abrirá en una nueva pestaña"
 				href="https://github.com/NexaSoft-SAS/ConstructoraColombia"
 				class="inline-block any-hover:scale-125 any-hover:opacity-70 motion-safe:transition motion-reduce:any-hover:scale-100"
@@ -47,6 +61,6 @@ import XIcon from "@/icons/x.astro"
 					class="text-primary transition-colors duration-300 hover:text-accent motion-reduce:duration-0"
 				/>
 			</a>
-		</li>
+		</li> -->
 	</ul>
 </nav>

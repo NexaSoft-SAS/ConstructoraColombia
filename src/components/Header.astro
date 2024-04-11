@@ -25,7 +25,7 @@ const pages = [
 					<a
 						href={href}
 						class:list={[
-							"nav-item relative hidden h-full select-none flex-col items-center justify-center gap-1 text-center text-xl uppercase text-white lg:flex lg:px-7 xl:px-10",
+							"nav-item relative hidden h-full select-none flex-col items-center justify-center gap-1 text-center text-xl uppercase text-primary hover:text-accent lg:flex lg:px-7 xl:px-10",
 							{ "pointer-events-none": disabled },
 							{ "current-page": active },
 						]}
@@ -101,7 +101,7 @@ const pages = [
 		<div class="gridBottomBarContainer absolute grid w-full items-center justify-between">
 			<div
 				class="h-[2px] w-full rounded-l-[30%] border-t-0"
-				style="background:linear-gradient(to right, transparent 3%, white 35%, white 100%)"
+				style="background:linear-gradient(to right, transparent 3%, var(--color-primary) 35%, var(--color-primary) 100%)"
 			>
 			</div>
 			<div class="-mr-[3px] ml-[4px]">
@@ -109,8 +109,8 @@ const pages = [
 			</div>
 
 			<div
-				class="h-[2px] w-full rounded-r-[30%] border-t-0 bg-white"
-				style="background:linear-gradient(to left, transparent 3%, white 35%, white 100%);"
+				class="h-[2px] w-full rounded-r-[30%] border-t-0 bg-primary"
+				style="background:linear-gradient(to left, transparent 3%, var(--color-primary) 35%, var(--color-primary) 100%);"
 			>
 			</div>
 		</div>

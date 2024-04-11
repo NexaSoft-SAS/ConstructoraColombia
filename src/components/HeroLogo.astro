@@ -29,8 +29,7 @@
 				}
 				.cls-4 {
 					font-size: 126px;
-					/* fill: #333;
-					stroke: #333; */
+					/* #333 */
 					fill: #fff;
 					stroke: #fff;
 					stroke-width: 8px;
@@ -39,21 +38,6 @@
 				.cls-5 {
 					letter-spacing: -0.02em;
 				}
-				/* .cls-6 {
-					letter-spacing: -0.01em;
-				}
-				.cls-7 {
-					letter-spacing: 0em;
-				}
-				.cls-8 {
-					letter-spacing: 0em;
-				}
-				.cls-9 {
-					letter-spacing: -0.03em;
-				}
-				.cls-10 {
-					letter-spacing: -0.03em;
-				} */
 			</style>
 			<linearGradient
 				id="Degradado_sin_nombre_12"
@@ -86,18 +70,7 @@
 				<rect class="cls-2" x="485.99" y="117.75" width="111" height="250"></rect>
 				<text class="cls-4" transform="translate(314.01 501.41)">
 					<tspan class="cls-5">CONSTRUCTORA</tspan>
-					<!-- <tspan x="70.31" y="0">ON</tspan>
-					<tspan class="cls-6" x="246.33" y="0">S</tspan>
-					<tspan class="cls-7" x="314.12" y="0">T</tspan>
-					<tspan class="cls-8" x="386.82" y="0">R</tspan>
-					<tspan x="459.52" y="0">UC</tspan>
-					<tspan class="cls-9" x="616.64" y="0">T</tspan>
-					<tspan x="685.44" y="0">ORA</tspan> -->
 					<tspan class="cls-5" x="164.56" y="145">COLOMBIA</tspan>
-					<!-- <tspan class="cls-5" x="164.56" y="145">C</tspan>
-					<tspan x="234.86" y="145">O</tspan>
-					<tspan class="cls-10" x="323.19" y="145">L</tspan>
-					<tspan class="cls-7" x="383.16" y="145">OMBIA</tspan> -->
 				</text>
 			</g>
 		</g>
@@ -105,3 +78,23 @@
 	{Astro.props.noEffect && <use href="#hero-logo" class="text-[#f5cc2e]/70 blur-xl md:blur-md" />}
 	<use href="#hero-logo" class:list={Astro.props.noEffect ? "text-white" : "text-primary"}></use>
 </svg>
+<style>
+	#logo {
+		fill-opacity: 0;
+		stroke-dasharray: 1300;
+		stroke-dashoffset: 1300;
+		animation: dash 2s ease-in forwards;
+	}
+
+	@keyframes dash {
+		70% {
+			fill-opacity: 0;
+		}
+
+		100% {
+			fill-opacity: 100%;
+			stroke-dashoffset: 0;
+			stroke-width: 1;
+		}
+	}
+</style>
