@@ -1,5 +1,6 @@
 ---
 import Typography from "@/components/Typography.astro"
+import WhatsAppIcon from "@/icons/whatsapp.astro"
 import Location from "@/sections/Location.astro"
 ---
 
@@ -38,7 +39,10 @@ import Location from "@/sections/Location.astro"
 			target="_blank"
 			rel="noopener"
 			aria-label="Abrir chat de Whatsapp con Constructora Colombia, se abrirá en una nueva pestaña"
-			><Typography
+			class="flex flex-row items-center justify-center gap-4"
+		>
+			<WhatsAppIcon class="" />
+			<Typography
 				as="h3"
 				variant="body"
 				color="primary"

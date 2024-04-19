@@ -18,7 +18,7 @@ const { count, projects } = Astro.props
 
 <section class="forecastGrid mt-40 grid items-center gap-4 px-7">
 	<div class="pronostico flex flex-col items-center justify-center gap-4">
-		<h2 class="text-2xl font-medium uppercase text-white">Unidades disponibles</h2>
+		<h2 class="text-2xl font-medium uppercase text-accent">Unidades disponibles</h2>
 		<p class="max-w-72 text-center text-xl text-primary">
 			Número de unidades disponibles de {count} construidas
 		</p>
@@ -33,7 +33,7 @@ const { count, projects } = Astro.props
 	/>
 	<div class="action flex w-full flex-col items-center justify-center">
 		<Action
-			class="mt-20 w-full max-w-lg text-base uppercase"
+			class="mt-20 w-full max-w-lg text-base uppercase text-secondary"
 			as="button"
 			id="add-to-calendar"
 			aria-disabled="true"

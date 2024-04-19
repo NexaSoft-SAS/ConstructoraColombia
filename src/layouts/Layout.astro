@@ -2,6 +2,7 @@
 import { ViewTransitions } from "astro:transitions"
 
 import ButtonUp from "@/components/ButtonUp.astro"
+import ButtonWhatsApp from "@/components/ButtonWhatsApp.astro"
 import Header from "@/components/Header.astro"
 import KonamiCode from "@/components/KonamiCode.astro"
 import LightsBackground from "@/components/LightsBackground.astro"
@@ -68,6 +69,7 @@ const { title, description, preload, canonical, image } = Astro.props
 			<Footer />
 			<KonamiCode />
 		</div>
+		<ButtonWhatsApp />
 		<ButtonUp />
 		<style is:global>
 			:root {

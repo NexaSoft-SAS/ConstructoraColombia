@@ -1,6 +1,6 @@
 export interface Combat {
 	id: string
-	projects: string[] // es un string porque hace referencia a los ids de los boxeadores
+	projects: string[] // es un string porque hace referencia a los ids de los proyectos
 }
 
 export const COMBATS: Combat[] = [
@@ -10,7 +10,7 @@ export const COMBATS: Combat[] = [
 	},
 	{
 		id: "2",
-		projects: ["edificio-gloria"],
+		projects: ["edificio-alcala"],
 	},
 	{
 		id: "3",

@@ -73,16 +73,16 @@ export const PROJECTS: Project[] = addGetters([
 		],
 	},
 	{
-		id: "edificio-gloria",
-		name: "Edificio Gloria",
-		realName: "Edificio Gloria",
+		id: "edificio-alcala",
+		name: "Edificio Alcalá",
+		realName: "Edificio Alcalá",
 		locality: "Puente Aranda",
 		release: new Date(2021, 10, 3),
 		builtArea: 39,
 		privateArea: 33.3,
 		address: "Cl. 34 Sur #51b-45, Alcalá, Bogotá",
 		price: 0,
-		versus: "edificio-gloria",
+		versus: "edificio-alcala",
 		bedrooms: "Dos", // encontrado
 		toilets: 1,
 		socials: {

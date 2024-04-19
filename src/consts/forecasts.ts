@@ -16,12 +16,12 @@ export const FORECASTS: Forecast[] = [
 			{
 				projectId: "edificio-genesis",
 				forecast: 0.3,
-				predictionsCount: 30,
+				predictionsCount: 6,
 			},
 			{
 				projectId: "edificio-genesis",
 				forecast: 0.7,
-				predictionsCount: 70,
+				predictionsCount: 14,
 			},
 		],
 	},
