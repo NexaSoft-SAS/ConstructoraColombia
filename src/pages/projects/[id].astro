@@ -77,10 +77,10 @@ if (forecast) {
 					<ProjectDetailInfo title="Nombre del proyecto" value={project.name} />
 					<ProjectDetailInfo title="Ubicación" value={project.address} />
 					<ProjectDetailInfo title="Localidad" value={project.locality} />
-					<ProjectDetailInfo title="Antiguedad" value={`${project.age} años`} />
+					<!-- <ProjectDetailInfo title="Antiguedad" value={`${project.age} años`} />
 					<div class="hidden md:block">
 						<ProjectDetailInfoRival title="Precio" value={rivals} />
-					</div>
+					</div> -->
 				</div>
 
 				<div
@@ -89,7 +89,7 @@ if (forecast) {
 					<ProjectBigImage id={id} name={project.name} address={project.address} />
 				</div>
 
-				<div class="order-3 flex w-full flex-col md:w-auto md:gap-y-20 lg:w-1/4">
+				<!-- <div class="order-3 flex w-full flex-col md:w-auto md:gap-y-20 lg:w-1/4">
 					<ProjectDetailInfo title="Área Construida" value={`${project.builtArea} m2.`} />
 					<ProjectDetailInfo title="Área Privada" value={`${project.privateArea} m2.`} />
 					<ProjectDetailInfo title="Alcobas" value={project.bedrooms} />
@@ -97,7 +97,7 @@ if (forecast) {
 					<div class="block md:hidden">
 						<ProjectDetailInfoRival title="Rival/es" value={rivals} />
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<div class="mt-20 flex flex-row flex-wrap justify-center gap-8">
@@ -135,11 +135,11 @@ if (forecast) {
 				</section>
 			)
 		}
-		{
+		<!-- {
 			forecast && (
 				<Forecasts combatNumber={combat.id} count={forecastCount} projects={projectsWithForecast} />
 			)
-		}
+		} -->
 		<!-- <CombatSection combatNumber={combat.id} projects={projects} /> -->
 	</main>
 </Layout>
