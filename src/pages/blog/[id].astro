@@ -1,5 +1,9 @@
 ---
 const { id } = Astro.params
+
+export function getStaticPaths(): any {
+	return { params: { id } }
+}
 ---
 
 <div>
