@@ -1,0 +1,100 @@
+<svg
+	class:list={Astro.props.class}
+	width="800"
+	height="679"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	viewBox="0 0 1396 963"
+	role="img"
+	aria-label="Logotipo de Constructora Colombia"
+>
+	<symbol id="hero-logo">
+		<defs>
+			<style>
+				.cls-1,
+				.cls-2,
+				.cls-3 {
+					stroke: #f0bd22;
+					stroke-miterlimit: 10;
+				}
+				.cls-1 {
+					fill: url(#Degradado_sin_nombre_12);
+				}
+				.cls-2 {
+					fill: #f9c219;
+				}
+				.cls-3 {
+					fill: #f5cc2e;
+				}
+				.cls-4 {
+					font-size: 126px;
+					/* #333 */
+					fill: var(--color-primary);
+					stroke: var(--color-primary);
+					stroke-width: 8px;
+					font-family: Dubai-Regular, Dubai, Sans-serif;
+				}
+				.cls-5 {
+					letter-spacing: -0.02em;
+				}
+			</style>
+			<linearGradient
+				id="Degradado_sin_nombre_12"
+				x1="182.28"
+				y1="844.87"
+				x2="182.28"
+				y2="117.75"
+				gradientUnits="userSpaceOnUse"
+			>
+				<stop offset="0" stop-color="#f5cc2e"></stop>
+				<stop offset="0.43" stop-color="#f6ca2a"></stop>
+				<stop offset="0.91" stop-color="#f8c41d"></stop>
+				<stop offset="1" stop-color="#f9c219"></stop>
+			</linearGradient>
+		</defs>
+		<g id="Capa_2" data-name="Capa 2">
+			<g id="Profile">
+				<path
+					class="cls-1"
+					d="M182.28,481.31A181.79,181.79,0,0,0,364.06,663.09V844.87C163.27,844.87.5,682.1.5,481.31S163.27,117.75,364.06,117.75V299.53A181.78,181.78,0,0,0,182.28,481.31Z"
+				></path>
+				<rect class="cls-2" x="371.46" y="0.5" width="111" height="113.84"></rect>
+				<rect
+					class="cls-3"
+					x="371.46"
+					y="848.58"
+					width="111"
+					height="113.84"
+					transform="translate(853.92 1810.99) rotate(-180)"></rect>
+				<rect class="cls-2" x="485.99" y="117.75" width="111" height="250"></rect>
+				<text class="cls-4" transform="translate(314.01 501.41)">
+					<tspan class="cls-5">CONSTRUCTORA</tspan>
+					<tspan class="cls-5" x="164.56" y="145">COLOMBIA</tspan>
+				</text>
+			</g>
+		</g>
+	</symbol>
+	{Astro.props.noEffect && <use href="#hero-logo" class="text-[#f5cc2e]/70 blur-lg md:blur-md" />}
+	<use href="#hero-logo" class:list={Astro.props.noEffect ? "text-white" : "text-primary"}></use>
+</svg>
+<style>
+	#logo {
+		fill-opacity: 0;
+		stroke-dasharray: 1300;
+		stroke-dashoffset: 1300;
+		animation: dash 2s ease-in forwards;
+	}
+
+	@keyframes dash {
+		70% {
+			fill-opacity: 0;
+		}
+
+		100% {
+			fill-opacity: 100%;
+			stroke-dashoffset: 0;
+			stroke-width: 1;
+		}
+	}
+</style>
