@@ -31,3 +31,4 @@ yarn.lock
 
 # generated vercel output
 .vercel/
+.codegpt
